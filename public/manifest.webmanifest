@@ -1,0 +1,23 @@
+{
+  "name": "LifeLedger NG — Household Ledger",
+  "short_name": "LifeLedger",
+  "description": "Know what you own. Remember what it needs. Protect its value. Household asset, warranty, and maintenance management tailored for Nigeria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F1",
+  "theme_color": "#123D2D",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "utilities",
+    "lifestyle"
+  ]
+}
