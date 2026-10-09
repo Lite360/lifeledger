@@ -3,151 +3,230 @@
     <!-- HERO SECTION -->
     <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-surface-main via-surface-main to-brand-sage/20 border-b border-surface-border">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <!-- Hero Text -->
-          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-sage border border-brand-emerald/30 text-brand-forest text-xs font-semibold">
-              <span class="w-2 h-2 rounded-full bg-brand-emerald animate-pulse"></span>
-              <span>All-In-One Household Ledger & Service Platform for Nigeria</span>
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-forest tracking-tight leading-[1.1]">
-              Know what you own. <br />
-              <span class="text-brand-emerald">Remember what it needs.</span> <br />
-              Protect its value.
-            </h1>
-
-            <p class="text-base sm:text-lg text-mutedText max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Stop losing purchase receipts, missing 250-hour generator service intervals, and forfeiting warranty claims. LifeLedger NG organizes your household electronics, power systems, appliances, repair expenses, and vetted technicians in one trusted ledger.
-            </p>
-
-            <!-- Quick Pill Highlights -->
-            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-xs">
-              <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest">
-                ⚡ Generators & Inverters
-              </span>
-              <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest">
-                📄 10MB Encrypted Receipts
-              </span>
-              <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest">
-                ⏱️ 250h Service Recurrence
-              </span>
-              <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest">
-                🔧 Vetted Local Technicians
-              </span>
-              <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest">
-                💳 Paystack Billing
-              </span>
-            </div>
-
-            <!-- CTA Group -->
-            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-3">
-              <router-link to="/dashboard" class="btn-forest px-6 py-3.5 text-sm w-full sm:w-auto shadow-md flex items-center justify-center space-x-2">
-                <span>Open Household Ledger</span>
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </router-link>
-              <a href="#modules" class="btn-secondary px-6 py-3.5 text-sm w-full sm:w-auto flex items-center justify-center space-x-2">
-                <span>What's In This Project?</span>
-                <svg class="w-4 h-4 text-brand-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </a>
-            </div>
-
-            <!-- Trust Points -->
-            <div class="pt-6 grid grid-cols-3 gap-4 border-t border-surface-border/70 text-left">
-              <div>
-                <p class="text-xl sm:text-2xl font-black text-brand-forest">100%</p>
-                <p class="text-xs text-mutedText">Tenant Isolation & RLS</p>
-              </div>
-              <div>
-                <p class="text-xl sm:text-2xl font-black text-brand-forest">₦0</p>
-                <p class="text-xs text-mutedText">Free Forever Household Plan</p>
-              </div>
-              <div>
-                <p class="text-xl sm:text-2xl font-black text-brand-forest">256-Bit</p>
-                <p class="text-xs text-mutedText">Encrypted Private Storage</p>
-              </div>
-            </div>
+        <!-- Centered Hero Text Content -->
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-sage border border-brand-emerald/30 text-brand-forest text-xs font-semibold shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-brand-emerald animate-pulse"></span>
+            <span>All-In-One Household Ledger & Service Platform for Nigeria</span>
           </div>
 
-          <!-- Hero Graphic / Interactive Card Preview -->
-          <div class="lg:col-span-5 relative">
-            <div class="card-surface p-5 shadow-elevated border-2 border-brand-emerald/20 relative z-10 space-y-4">
-              <!-- Window top bar -->
-              <div class="flex items-center justify-between pb-3 border-b border-surface-border">
-                <div class="flex items-center space-x-2">
-                  <span class="w-3 h-3 rounded-full bg-red-400"></span>
-                  <span class="w-3 h-3 rounded-full bg-amber-400"></span>
-                  <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-                  <span class="text-xs font-bold text-brand-forest pl-2">Live Household Ledger Card</span>
-                </div>
-                <span class="badge-emerald text-[11px] font-bold">Active Warranty</span>
-              </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-forest tracking-tight leading-[1.12]">
+            Know what you own. <br class="hidden sm:inline" />
+            <span class="text-brand-emerald">Remember what it needs.</span> <br class="hidden sm:inline" />
+            Protect its value.
+          </h1>
 
-              <!-- Preview Asset -->
-              <div class="space-y-3">
-                <div class="relative h-44 rounded-xl overflow-hidden bg-surface-muted">
+          <p class="text-base sm:text-lg text-mutedText max-w-2xl mx-auto leading-relaxed">
+            Stop losing purchase receipts, missing 250-hour generator service intervals, and forfeiting warranty claims. LifeLedger NG organizes your appliances, solar inverters, diesel generators, repair expenses, and vetted technicians in one trusted ledger.
+          </p>
+
+          <!-- Centered Quick Pill Highlights -->
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
+            <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest shadow-xs">
+              ⚡ Generators & Inverters
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest shadow-xs">
+              📄 10MB Encrypted Receipts
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest shadow-xs">
+              ⏱️ 250h Service Recurrence
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest shadow-xs">
+              🔧 Vetted Local Technicians
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-surface-border font-medium text-brand-forest shadow-xs">
+              💳 Paystack Billing
+            </span>
+          </div>
+
+          <!-- Centered CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
+            <router-link to="/dashboard" class="btn-forest px-7 py-3.5 text-sm w-full sm:w-auto shadow-md flex items-center justify-center space-x-2">
+              <span>Open Household Ledger</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </router-link>
+            <a href="#modules" class="btn-secondary px-6 py-3.5 text-sm w-full sm:w-auto flex items-center justify-center space-x-2">
+              <span>What's In This Project?</span>
+              <svg class="w-4 h-4 text-brand-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Centered Trust Points -->
+          <div class="pt-8 max-w-2xl mx-auto grid grid-cols-3 gap-6 border-t border-surface-border/70 text-center">
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-brand-forest">100%</p>
+              <p class="text-xs text-mutedText">Tenant Isolation & RLS</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-brand-forest">₦0</p>
+              <p class="text-xs text-mutedText">Free Forever Household Plan</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-brand-forest">256-Bit</p>
+              <p class="text-xs text-mutedText">Encrypted Private Storage</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centered Hero Image / Showcase Container -->
+        <div class="mt-12 sm:mt-16 max-w-5xl mx-auto relative">
+          <!-- Background Ambient Glow Blobs -->
+          <div class="absolute -top-8 -right-8 w-64 h-64 bg-brand-emerald/15 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-8 -left-8 w-64 h-64 bg-amber-200/25 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- Showcase Application Frame -->
+          <div class="card-surface p-4 sm:p-6 shadow-2xl rounded-2xl sm:rounded-3xl border-2 border-brand-emerald/20 relative z-10 space-y-5 bg-white">
+            <!-- Window Title Bar -->
+            <div class="flex items-center justify-between pb-4 border-b border-surface-border">
+              <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                <span class="text-xs font-bold text-brand-forest pl-2">LifeLedger NG — Executive Household Vault (Lekki Phase 1)</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="badge-emerald text-[11px] font-bold">Active Coverage</span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-brand-forest border border-emerald-200">
+                  RLS Protected
+                </span>
+              </div>
+            </div>
+
+            <!-- Multi-Pane Content Showcase -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <!-- Left Featured Equipment Card (5 cols) -->
+              <div class="lg:col-span-5 space-y-3 p-4 rounded-2xl bg-surface-main border border-surface-border">
+                <div class="relative h-48 rounded-xl overflow-hidden bg-surface-muted shadow-xs">
                   <img 
-                    src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" 
-                    alt="Mikano Generator" 
+                    src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" 
+                    alt="Mikano Soundproof Diesel Generator" 
                     class="w-full h-full object-cover"
                   />
-                  <div class="absolute bottom-2 left-2 bg-brand-forest/90 text-white text-[10px] font-bold px-2 py-0.5 rounded">
-                    Generator Shed (Lekki Compound)
+                  <div class="absolute bottom-2 left-2 bg-brand-forest/90 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-xs">
+                    Generator Shed · Compound Rear
                   </div>
+                  <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-xs">
+                    In Service
+                  </span>
                 </div>
 
-                <div>
+                <div class="space-y-1">
                   <div class="flex items-start justify-between">
                     <div>
                       <h3 class="text-sm font-bold text-brand-forest">Mikano 10kVA Soundproof Generator</h3>
                       <p class="text-[11px] text-mutedText font-mono">SN: MK-NG-98842-X · Bought at Mikano VI</p>
                     </div>
-                    <span class="text-sm font-extrabold text-brand-forest">₦4,850,000</span>
+                    <span class="text-sm font-black text-brand-forest">₦4,850,000</span>
                   </div>
                 </div>
 
-                <!-- Overdue Alert Box -->
-                <div class="bg-red-50 border border-red-200 rounded-xl p-3 text-xs flex items-center justify-between">
-                  <div class="flex items-center space-x-2 text-status-danger font-semibold">
-                    <span class="w-2 h-2 rounded-full bg-status-danger animate-ping"></span>
-                    <span>250h Service Due: Oil & Perkins Filters</span>
-                  </div>
-                  <router-link to="/quotes" class="text-status-danger underline font-bold hover:text-red-900">
-                    Get Quote
-                  </router-link>
-                </div>
-
-                <!-- Attached Encrypted Documents Preview -->
-                <div class="flex items-center justify-between text-xs text-mutedText bg-surface-main p-2.5 rounded-lg border border-surface-border">
+                <!-- Attached Encrypted Document Badge -->
+                <div class="flex items-center justify-between text-xs text-mutedText bg-white p-2.5 rounded-lg border border-surface-border">
                   <div class="flex items-center space-x-2 truncate">
                     <svg class="w-4 h-4 text-brand-emerald shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span class="truncate">mikano_receipt_invoice.pdf (1.2 MB)</span>
+                    <span class="truncate font-medium text-brand-forest">mikano_receipt_invoice.pdf</span>
                   </div>
-                  <span class="text-[10px] font-bold text-brand-forest bg-surface-card px-2 py-0.5 rounded border border-surface-border shrink-0">
-                    Encrypted
+                  <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0">
+                    1.2 MB Encrypted
                   </span>
                 </div>
+              </div>
 
-                <!-- Technician Quote Snippet -->
-                <div class="p-3 rounded-lg bg-emerald-50/70 border border-emerald-200/80 flex items-center justify-between text-xs">
-                  <div>
-                    <p class="font-bold text-brand-forest">Mikano Certified Field Eng.</p>
-                    <p class="text-[10px] text-brand-emerald font-semibold">★ 4.95 Rating • 90-day warranty</p>
+              <!-- Right Center Dashboard Live Action Widgets (7 cols) -->
+              <div class="lg:col-span-7 space-y-4">
+                <!-- Overdue Service Warning Card -->
+                <div class="p-4 rounded-xl bg-red-50/80 border border-red-200 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-status-danger font-bold text-xs">
+                      <span class="w-2.5 h-2.5 rounded-full bg-status-danger animate-ping"></span>
+                      <span>Preventive Maintenance Alert: 250 Running Hours Due</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-900">
+                      Overdue by 3 days
+                    </span>
                   </div>
-                  <span class="font-extrabold text-brand-forest">₦68,000</span>
+                  <p class="text-xs text-red-950/80 leading-relaxed">
+                    Routine diesel servicing required: replace Perkins oil filter, drain water separator, and inspect alternator AVR belt before Harmattan dust peaks.
+                  </p>
+                </div>
+
+                <!-- Live Received Technician Quotes -->
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-bold uppercase tracking-wider text-brand-forest text-[11px]">
+                      Technician Quotes Received (2 Bids)
+                    </span>
+                    <span class="text-[11px] text-brand-emerald font-semibold">
+                      Private Bidding · Serial Number Concealed
+                    </span>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <!-- Quote Card 1 -->
+                    <div class="p-3.5 rounded-xl bg-emerald-50/60 border border-brand-emerald/40 space-y-2 shadow-xs">
+                      <div class="flex items-start justify-between">
+                        <div>
+                          <p class="font-bold text-xs text-brand-forest">Mikano Certified Eng.</p>
+                          <p class="text-[10px] text-brand-emerald font-semibold">★ 4.95 Rating · VI Base</p>
+                        </div>
+                        <span class="font-black text-xs text-brand-forest">₦68,000</span>
+                      </div>
+                      <p class="text-[11px] text-mutedText line-clamp-2">
+                        Includes OEM Perkins filter, Mobil Delvac 15W40, and 90-day seal warranty.
+                      </p>
+                      <div class="pt-1 flex items-center justify-between border-t border-emerald-200/50 text-[10px]">
+                        <span class="text-mutedText">⏱️ 4h On-site</span>
+                        <router-link to="/quotes" class="font-bold text-brand-emerald hover:underline">
+                          Accept Quote →
+                        </router-link>
+                      </div>
+                    </div>
+
+                    <!-- Quote Card 2 -->
+                    <div class="p-3.5 rounded-xl bg-surface-main border border-surface-border space-y-2">
+                      <div class="flex items-start justify-between">
+                        <div>
+                          <p class="font-bold text-xs text-brand-forest">Pragmatic Energy Labs</p>
+                          <p class="text-[10px] text-mutedText font-semibold">★ 4.92 Rating · Ikeja</p>
+                        </div>
+                        <span class="font-black text-xs text-brand-forest">₦75,000</span>
+                      </div>
+                      <p class="text-[11px] text-mutedText line-clamp-2">
+                        Complete oil flush + ATS automatic transfer switch coordination check.
+                      </p>
+                      <div class="pt-1 flex items-center justify-between border-t border-surface-border/50 text-[10px]">
+                        <span class="text-mutedText">⏱️ Same-day</span>
+                        <router-link to="/quotes" class="font-bold text-brand-forest hover:underline">
+                          View Scope →
+                        </router-link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live Quick Action Toolbar -->
+                <div class="p-3 rounded-xl bg-surface-main border border-surface-border flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <div class="flex items-center space-x-2 text-mutedText text-[11px]">
+                    <span>Household Spend YTD:</span>
+                    <span class="font-bold text-brand-forest">₦114,500</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <router-link to="/directory" class="btn-secondary py-1 px-3 text-[11px] font-semibold">
+                      Find Technicians
+                    </router-link>
+                    <router-link to="/dashboard" class="btn-emerald py-1 px-3 text-[11px] font-bold shadow-xs">
+                      Open Dashboard
+                    </router-link>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <!-- Background subtle accent blobs -->
-            <div class="absolute -top-6 -right-6 w-36 h-36 bg-brand-emerald/15 rounded-full blur-2xl"></div>
-            <div class="absolute -bottom-6 -left-6 w-36 h-36 bg-amber-200/30 rounded-full blur-2xl"></div>
           </div>
         </div>
       </div>
