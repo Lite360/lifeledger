@@ -37,8 +37,8 @@
           </span>
         </div>
         <div class="mt-3">
-          <span class="text-3xl sm:text-4xl font-black text-brand-forest">12</span>
-          <p class="text-[11px] text-mutedText mt-1">Valued at {{ formatCurrency(stats.totalAssetValue) }}</p>
+          <span class="text-3xl sm:text-4xl font-black text-brand-forest">{{ assets.length }}</span>
+          <p class="text-[11px] text-mutedText mt-1">Valued at {{ formatCurrency(totalAssetValue) }}</p>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <!-- 2 Active Warranties -->
+      <!-- Active Warranties -->
       <div class="card-surface p-5 border-l-4 border-l-emerald-600 hover:shadow-card transition-shadow">
         <div class="flex items-center justify-between text-mutedText">
           <span class="text-xs font-semibold uppercase tracking-wider">Active Warranties</span>
@@ -69,7 +69,7 @@
           </span>
         </div>
         <div class="mt-3">
-          <span class="text-3xl sm:text-4xl font-black text-brand-forest">2</span>
+          <span class="text-3xl sm:text-4xl font-black text-brand-forest">{{ activeWarrantiesCount }}</span>
           <p class="text-[11px] text-mutedText mt-1">Verified with receipts</p>
         </div>
       </div>
@@ -212,23 +212,36 @@
       </div>
     </div>
 
-    <!-- Illustrative Preview Disclaimer (PRD 5.4 line 856) -->
-    <div class="text-center py-4 border-t border-surface-border text-xs text-mutedText">
-      Illustrative dashboard preview. Figures are sample data, not live records. Supabase PostgreSQL persistence will be activated in Phase 2.
+    <!-- Phase 2 Active Status Footnote -->
+    <div class="text-center py-4 border-t border-surface-border text-xs text-mutedText flex items-center justify-center space-x-2">
+      <span class="w-2 h-2 rounded-full bg-brand-emerald"></span>
+      <span>Phase 2 Asset Ledger active with persistent household storage, document security, and PostgreSQL migration schema.</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-import { DEMO_ASSETS, DEMO_MAINTENANCE_TASKS, DEMO_STATS } from '@/services/demoData';
+import { assetService } from '@/services/assetService';
+import { DEMO_MAINTENANCE_TASKS } from '@/services/demoData';
 import { formatCurrency, formatDate, calculateWarrantyStatus } from '@/utils/formatters';
 
 defineEmits(['open-add-asset']);
 
-const assets = DEMO_ASSETS;
+const assets = assetService.assets;
 const maintenanceTasks = DEMO_MAINTENANCE_TASKS;
-const stats = DEMO_STATS;
+
+const totalAssetValue = computed(() => {
+  return assets.value.reduce((acc, item) => acc + (item.purchasePrice || 0), 0);
+});
+
+const activeWarrantiesCount = computed(() => {
+  return assets.value.filter(a => {
+    if (!a.warranty?.expiryDate) return false;
+    const status = calculateWarrantyStatus(a.warranty.expiryDate);
+    return status.status === 'active' || status.status === 'expiring_soon';
+  }).length;
+});
 
 const greeting = computed(() => {
   const hour = new Date().getHours();

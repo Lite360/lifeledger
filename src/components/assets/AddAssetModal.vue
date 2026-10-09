@@ -178,25 +178,39 @@
             </div>
           </div>
 
-          <!-- Receipt & Document Upload Zone Simulation -->
+          <!-- Receipt & Document Upload Zone -->
           <div class="pt-3 border-t border-surface-border">
             <label class="form-label">
               Purchase Receipt or Warranty Card <span class="text-mutedText font-normal lowercase">(Optional)</span>
             </label>
-            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-surface-border border-dashed rounded-xl hover:border-brand-emerald/50 transition-colors bg-surface-main/50 cursor-pointer">
+            <div 
+              @click="$refs.fileInput.click()" 
+              class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-surface-border border-dashed rounded-xl hover:border-brand-emerald/50 transition-colors bg-surface-main/50 cursor-pointer"
+            >
+              <input 
+                ref="fileInput" 
+                type="file" 
+                class="hidden" 
+                accept="image/jpeg,image/png,image/webp,application/pdf"
+                @change="handleFileSelected" 
+              />
               <div class="space-y-1 text-center">
                 <svg class="mx-auto h-10 w-10 text-mutedText" stroke="currentColor" fill="none" viewBox="0 0 48 48">
                   <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <div class="flex text-xs text-mutedText">
+                <div v-if="selectedFile" class="text-xs font-semibold text-brand-emerald">
+                  Selected: {{ selectedFile.name }} ({{ Math.round(selectedFile.size / 1024) }} KB)
+                </div>
+                <div v-else class="flex text-xs text-mutedText justify-center">
                   <span class="relative font-semibold text-brand-emerald hover:underline">
                     Upload receipt or photo
                   </span>
                   <p class="pl-1">or drag and drop</p>
                 </div>
-                <p class="text-[10px] text-mutedText">PNG, JPG, PDF up to 10MB (Private encrypted storage in Phase 2)</p>
+                <p class="text-[10px] text-mutedText">JPG, PNG, WEBP, PDF up to 10MB</p>
               </div>
             </div>
+            <p v-if="fileError" class="text-xs text-status-danger mt-1">{{ fileError }}</p>
           </div>
 
           <!-- Modal Footer Actions -->
@@ -224,6 +238,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
+import { assetService, validateDocumentFile } from '@/services/assetService';
 
 const props = defineProps({
   isOpen: {
@@ -234,6 +249,9 @@ const props = defineProps({
 
 const emit = defineEmits(['close', 'asset-added']);
 
+const fileInput = ref(null);
+const selectedFile = ref(null);
+const fileError = ref('');
 const isSubmitting = ref(false);
 const successMessage = ref('');
 
@@ -257,17 +275,37 @@ const close = () => {
   emit('close');
 };
 
-const handleSubmit = () => {
+const handleFileSelected = (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  const validation = validateDocumentFile(file);
+  if (!validation.valid) {
+    fileError.value = validation.error;
+    selectedFile.value = null;
+    return;
+  }
+
+  fileError.value = '';
+  selectedFile.value = file;
+};
+
+const handleSubmit = async () => {
   isSubmitting.value = true;
-  setTimeout(() => {
-    isSubmitting.value = false;
-    successMessage.value = 'Asset registered successfully into demo ledger!';
-    emit('asset-added', { ...form, id: 'ast-' + Date.now() });
+  try {
+    const created = await assetService.createAsset({ ...form }, selectedFile.value);
+    successMessage.value = `Asset "${created.name}" registered successfully!`;
+    emit('asset-added', created);
     setTimeout(() => {
       successMessage.value = '';
+      selectedFile.value = null;
       Object.assign(form, initialForm);
       close();
-    }, 1200);
-  }, 600);
+    }, 1000);
+  } catch (err) {
+    fileError.value = err.message || 'Failed to save asset';
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 </script>

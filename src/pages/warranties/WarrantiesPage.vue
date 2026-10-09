@@ -51,11 +51,11 @@
 
 <script setup>
 import { computed } from 'vue';
-import { DEMO_ASSETS } from '@/services/demoData';
+import { assetService } from '@/services/assetService';
 import { formatDate, calculateWarrantyStatus } from '@/utils/formatters';
 
 const assetsWithWarranty = computed(() => {
-  return DEMO_ASSETS.filter(a => a.warranty && a.warranty.expiryDate);
+  return assetService.assets.value.filter(a => a.warranty && a.warranty.expiryDate);
 });
 
 const getWarrantyBadgeClass = (expiryDate) => calculateWarrantyStatus(expiryDate).badgeClass;

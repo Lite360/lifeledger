@@ -58,9 +58,6 @@
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-sage/60">
         <p>&copy; 2026 LifeLedger NG. All rights reserved.</p>
-        <p class="mt-2 sm:mt-0">
-          Crafted with Vue 3, Vite, Tailwind CSS & Supabase.
-        </p>
       </div>
     </div>
   </footer>

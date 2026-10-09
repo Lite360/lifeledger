@@ -175,20 +175,42 @@
               <p class="text-primaryText">{{ selectedAsset.notes }}</p>
             </div>
 
-            <!-- Attached Documents Simulation -->
+            <!-- Attached Documents List -->
             <div>
-              <span class="text-xs font-bold text-brand-forest block mb-2">Attached Documents (Encrypted)</span>
-              <div class="p-3 rounded-lg border border-surface-border flex items-center justify-between text-xs bg-surface-main">
+              <span class="text-xs font-bold text-brand-forest block mb-2">Attached Documents (Protected)</span>
+              <div v-if="selectedAsset.documents && selectedAsset.documents.length > 0" class="space-y-2">
+                <div 
+                  v-for="doc in selectedAsset.documents" 
+                  :key="doc.id"
+                  class="p-3 rounded-lg border border-surface-border flex items-center justify-between text-xs bg-surface-main"
+                >
+                  <div class="flex items-center space-x-2">
+                    <span class="text-brand-emerald font-bold">📄</span>
+                    <span class="font-medium">{{ doc.original_filename }} ({{ Math.round(doc.size_bytes / 1024) }} KB)</span>
+                  </div>
+                  <span class="text-[10px] text-brand-emerald font-semibold bg-brand-sage px-2 py-0.5 rounded">Encrypted</span>
+                </div>
+              </div>
+              <div v-else-if="selectedAsset.hasReceipt" class="p-3 rounded-lg border border-surface-border flex items-center justify-between text-xs bg-surface-main">
                 <div class="flex items-center space-x-2">
                   <span class="text-brand-emerald font-bold">📄</span>
                   <span>receipt_official_invoice.pdf</span>
                 </div>
-                <button class="text-brand-emerald font-bold hover:underline text-[11px]">Download (Demo)</button>
+                <span class="text-[10px] text-brand-emerald font-semibold bg-brand-sage px-2 py-0.5 rounded">Verified Scan</span>
+              </div>
+              <div v-else class="text-xs text-mutedText italic p-2 bg-surface-main rounded border border-surface-border">
+                No documents currently attached to this asset.
               </div>
             </div>
           </div>
 
-          <div class="p-4 bg-surface-main border-t border-surface-border flex justify-end">
+          <div class="p-4 bg-surface-main border-t border-surface-border flex items-center justify-between">
+            <button 
+              @click="handleDeleteAsset(selectedAsset.id)" 
+              class="text-status-danger text-xs font-bold hover:underline"
+            >
+              Delete Asset
+            </button>
             <button @click="selectedAsset = null" class="btn-forest text-xs py-2 px-4">Close Details</button>
           </div>
         </div>
@@ -199,29 +221,37 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { DEMO_ASSETS, DEMO_CATEGORIES } from '@/services/demoData';
+import { assetService } from '@/services/assetService';
+import { DEMO_CATEGORIES } from '@/services/demoData';
 import { formatCurrency, formatDate, calculateWarrantyStatus } from '@/utils/formatters';
 
 defineEmits(['open-add-asset']);
 
-const assets = DEMO_ASSETS;
+const assets = assetService.assets;
 const categories = DEMO_CATEGORIES;
 const searchQuery = ref('');
 const selectedCategory = ref('all');
 const selectedAsset = ref(null);
 
 const filteredAssets = computed(() => {
-  return assets.filter(item => {
+  return assets.value.filter(item => {
     const matchesCategory = selectedCategory.value === 'all' || item.category === selectedCategory.value;
     const q = searchQuery.value.toLowerCase().trim();
     const matchesSearch = !q || 
       item.name.toLowerCase().includes(q) || 
       item.brand.toLowerCase().includes(q) || 
-      item.serialNumber.toLowerCase().includes(q) ||
-      item.location.toLowerCase().includes(q);
+      (item.serialNumber && item.serialNumber.toLowerCase().includes(q)) ||
+      (item.location && item.location.toLowerCase().includes(q));
     return matchesCategory && matchesSearch;
   });
 });
+
+const handleDeleteAsset = async (id) => {
+  if (confirm('Are you sure you want to delete this asset? This action will remove its registered warranty and logs.')) {
+    await assetService.deleteAsset(id);
+    selectedAsset.value = null;
+  }
+};
 
 const getWarrantyBadgeClass = (expiryDate) => calculateWarrantyStatus(expiryDate).badgeClass;
 const getWarrantyLabel = (expiryDate) => calculateWarrantyStatus(expiryDate).label;
