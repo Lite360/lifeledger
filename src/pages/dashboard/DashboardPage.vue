@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <!-- 3 Upcoming Tasks -->
+      <!-- Upcoming Tasks -->
       <div class="card-surface p-5 border-l-4 border-l-brand-emerald hover:shadow-card transition-shadow">
         <div class="flex items-center justify-between text-mutedText">
           <span class="text-xs font-semibold uppercase tracking-wider">Upcoming Tasks</span>
@@ -53,7 +53,7 @@
           </span>
         </div>
         <div class="mt-3">
-          <span class="text-3xl sm:text-4xl font-black text-brand-forest">3</span>
+          <span class="text-3xl sm:text-4xl font-black text-brand-forest">{{ upcomingTasks.length }}</span>
           <p class="text-[11px] text-mutedText mt-1">Scheduled for next 30 days</p>
         </div>
       </div>
@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <!-- 1 Overdue Task (Danger) -->
+      <!-- Overdue Task (Danger) -->
       <div class="card-surface p-5 border-l-4 border-l-status-danger bg-red-50/20 hover:shadow-card transition-shadow">
         <div class="flex items-center justify-between text-status-danger">
           <span class="text-xs font-bold uppercase tracking-wider">Overdue Task</span>
@@ -85,14 +85,19 @@
           </span>
         </div>
         <div class="mt-3">
-          <span class="text-3xl sm:text-4xl font-black text-status-danger">1</span>
-          <p class="text-[11px] text-status-danger font-semibold mt-1">Generator service required</p>
+          <span class="text-3xl sm:text-4xl font-black text-status-danger">{{ overdueTasks.length }}</span>
+          <p class="text-[11px] text-status-danger font-semibold mt-1">
+            {{ overdueTasks.length > 0 ? 'Equipment service required' : 'All equipment up to date' }}
+          </p>
         </div>
       </div>
     </div>
 
     <!-- Immediate Attention Banner -->
-    <div class="card-surface p-4 border border-red-200 bg-red-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div 
+      v-if="overdueTasks.length > 0" 
+      class="card-surface p-4 border border-red-200 bg-red-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+    >
       <div class="flex items-center space-x-3">
         <span class="p-2 rounded-full bg-red-100 text-status-danger shrink-0">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -100,8 +105,8 @@
           </svg>
         </span>
         <div>
-          <p class="text-xs font-bold text-red-950">Overdue Maintenance: Mikano 10kVA Soundproof Generator</p>
-          <p class="text-[11px] text-red-800">Routine Oil & Diesel Filter replacement was due on 06 Oct 2026 (3 days ago).</p>
+          <p class="text-xs font-bold text-red-950">Overdue Service: {{ overdueTasks[0].title }}</p>
+          <p class="text-[11px] text-red-800">{{ overdueTasks[0].assetName }} was due on {{ formatDate(overdueTasks[0].dueDate) }}.</p>
         </div>
       </div>
       <router-link to="/maintenance" class="btn-forest text-xs py-2 px-3 self-start sm:self-auto shrink-0 bg-red-900 hover:bg-red-950">
@@ -223,13 +228,16 @@
 <script setup>
 import { computed } from 'vue';
 import { assetService } from '@/services/assetService';
-import { DEMO_MAINTENANCE_TASKS } from '@/services/demoData';
+import { maintenanceService } from '@/services/maintenanceService';
+import { expenseService } from '@/services/expenseService';
 import { formatCurrency, formatDate, calculateWarrantyStatus } from '@/utils/formatters';
 
 defineEmits(['open-add-asset']);
 
 const assets = assetService.assets;
-const maintenanceTasks = DEMO_MAINTENANCE_TASKS;
+const upcomingTasks = maintenanceService.upcomingTasks;
+const overdueTasks = maintenanceService.overdueTasks;
+const ytdSpend = expenseService.ytdSpend;
 
 const totalAssetValue = computed(() => {
   return assets.value.reduce((acc, item) => acc + (item.purchasePrice || 0), 0);
