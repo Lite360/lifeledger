@@ -1,8 +1,5 @@
 <template>
   <div class="min-h-screen flex flex-col bg-surface-main">
-    <!-- PRD Explicit Demo Banner -->
-    <DemoBanner />
-
     <div class="flex-1 flex overflow-hidden">
       <!-- Desktop Sidebar -->
       <AppSidebar @open-add-asset="isAddAssetModalOpen = true" />
@@ -59,7 +56,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import DemoBanner from '@/components/common/DemoBanner.vue';
 import AppSidebar from '@/components/common/AppSidebar.vue';
 import AppHeader from '@/components/common/AppHeader.vue';
 import MobileBottomNav from '@/components/common/MobileBottomNav.vue';
@@ -74,11 +70,14 @@ const mobileNavItems = [
   { label: 'Warranties', path: '/warranties' },
   { label: 'Maintenance Schedule', path: '/maintenance' },
   { label: 'Expenses & Repairs', path: '/expenses' },
+  { label: 'Service Directory', path: '/directory' },
+  { label: 'Quotes & Repairs', path: '/quotes' },
+  { label: 'Billing & Plans', path: '/billing' },
+  { label: 'Business Portal', path: '/business/portal' },
   { label: 'Household Settings', path: '/settings' },
 ];
 
 const handleAssetAdded = (newAsset) => {
-  // Demo event handler
-  console.log('Asset added to demo state:', newAsset);
+  console.log('Asset added to ledger:', newAsset);
 };
 </script>

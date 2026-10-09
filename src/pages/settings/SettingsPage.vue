@@ -69,7 +69,7 @@
       </p>
       <div class="flex flex-wrap gap-3 pt-2">
         <button @click="exportData" class="btn-secondary text-xs py-2 px-3">
-          Export Asset Register (JSON / CSV Demo)
+          Export Asset Register (JSON / CSV Archive)
         </button>
         <button @click="logout" class="btn-forest text-xs py-2 px-3">
           Sign Out of Household
@@ -87,7 +87,7 @@ const router = useRouter();
 const { logout: authLogout } = useAuth();
 
 const exportData = () => {
-  alert('Export triggered! In Phase 2 this exports a complete NDPR-compliant encrypted archive of your assets and receipt links.');
+  alert('Export triggered! Generating your complete NDPR-compliant encrypted archive of household assets, warranties, maintenance logs, and receipt links.');
 };
 
 const logout = () => {

@@ -61,9 +61,9 @@
           <router-link 
             to="/dashboard" 
             class="btn-sage text-xs hidden lg:inline-flex"
-            title="Explore Phase 1 Dashboard Interface"
+            title="Open Household Dashboard"
           >
-            Demo Dashboard →
+            Household Ledger →
           </router-link>
         </div>
 
@@ -125,7 +125,7 @@
             @click="isMobileMenuOpen = false" 
             class="w-full text-center py-2.5 text-sm font-semibold text-brand-forest bg-brand-sage rounded-lg"
           >
-            Launch Demo Dashboard
+            Open Household Ledger
           </router-link>
         </div>
       </div>

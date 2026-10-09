@@ -39,8 +39,8 @@
           <ul class="space-y-2 text-xs text-brand-sage/80">
             <li><router-link to="/pricing" class="hover:text-white transition-colors">Pricing Plans</router-link></li>
             <li><router-link to="/help" class="hover:text-white transition-colors">Help Center & FAQ</router-link></li>
-            <li><router-link to="/dashboard" class="hover:text-white transition-colors">Live Demo Shell</router-link></li>
-            <li><a href="#roadmap" class="hover:text-white transition-colors">Product Roadmap</a></li>
+            <li><router-link to="/dashboard" class="hover:text-white transition-colors">Household Dashboard</router-link></li>
+            <li><router-link to="/directory" class="hover:text-white transition-colors">Service Directory</router-link></li>
           </ul>
         </div>
 

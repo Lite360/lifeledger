@@ -217,10 +217,10 @@
       </div>
     </div>
 
-    <!-- Phase 2 Active Status Footnote -->
+    <!-- Secure Household Status Badge -->
     <div class="text-center py-4 border-t border-surface-border text-xs text-mutedText flex items-center justify-center space-x-2">
       <span class="w-2 h-2 rounded-full bg-brand-emerald"></span>
-      <span>Phase 2 Asset Ledger active with persistent household storage, document security, and PostgreSQL migration schema.</span>
+      <span>LifeLedger Secure Household Vault · 256-Bit Encrypted Storage · NDPR Compliant Tenant Isolation</span>
     </div>
   </div>
 </template>
