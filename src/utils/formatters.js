@@ -26,6 +26,15 @@ export function formatCurrency(amount, currencyCode = 'NGN') {
 }
 
 /**
+ * Format currency specifically as Nigerian Naira (₦)
+ * @param {number|string} amount 
+ * @returns {string}
+ */
+export function formatNaira(amount) {
+  return formatCurrency(amount, 'NGN');
+}
+
+/**
  * Format a date string into standard human-readable format
  * @param {string|Date} dateVal 
  * @returns {string}

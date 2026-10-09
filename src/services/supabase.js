@@ -18,3 +18,5 @@ export const supabase = hasSupabaseConfig
       },
     })
   : null;
+
+export const isSupabaseConfigured = () => hasSupabaseConfig;

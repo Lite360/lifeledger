@@ -25,6 +25,13 @@ import MaintenancePage from '@/pages/maintenance/MaintenancePage.vue';
 import ExpensesPage from '@/pages/expenses/ExpensesPage.vue';
 import SettingsPage from '@/pages/settings/SettingsPage.vue';
 
+// Phase 4 Commercial & Marketplace Pages
+import ProvidersPage from '@/pages/directory/ProvidersPage.vue';
+import QuotesPage from '@/pages/quotes/QuotesPage.vue';
+import BusinessPortalPage from '@/pages/business/BusinessPortalPage.vue';
+import BillingPage from '@/pages/billing/BillingPage.vue';
+import AdminPage from '@/pages/admin/AdminPage.vue';
+
 const routes = [
   // Public marketing & legal layout
   {
@@ -135,6 +142,36 @@ const routes = [
         name: 'Expenses',
         component: ExpensesPage,
         meta: { title: 'Expenses & Repairs — LifeLedger NG' },
+      },
+      {
+        path: 'directory',
+        name: 'Directory',
+        component: ProvidersPage,
+        meta: { title: 'Service Directory — LifeLedger NG' },
+      },
+      {
+        path: 'quotes',
+        name: 'Quotes',
+        component: QuotesPage,
+        meta: { title: 'Service Quotes — LifeLedger NG' },
+      },
+      {
+        path: 'business/portal',
+        name: 'BusinessPortal',
+        component: BusinessPortalPage,
+        meta: { title: 'Business & Provider Portal — LifeLedger NG' },
+      },
+      {
+        path: 'billing',
+        name: 'Billing',
+        component: BillingPage,
+        meta: { title: 'Subscriptions & Billing — LifeLedger NG' },
+      },
+      {
+        path: 'admin',
+        name: 'Admin',
+        component: AdminPage,
+        meta: { title: 'Platform Operations & Compliance — LifeLedger NG' },
       },
       {
         path: 'settings',
